@@ -22,19 +22,14 @@ public class UserServiceImpl {
 
 		UserEntity entity = new UserEntity();
 		modelMapper.map(userDto, entity);
-
-		UserEntity savedUser = userRepository.save(entity);
-
+		userRepository.save(entity);
 		return "success";
 	}
 
 	public UserDto getUserById(Long userId) {
 		UserEntity user = userRepository.findById(userId).get();
-
 		UserDto dto = new UserDto();
-
 		modelMapper.map(user, dto);
-
 		return dto;
 	}
 
